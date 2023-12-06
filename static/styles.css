@@ -75,107 +75,35 @@ input:checked + .slider:before {
 }
 
 
-/* CSS for button colors (index.html) */
-.btn-timer,
-.btn-timer:hover,
-.btn-timer:active,
-.btn-timer:visited,
-.btn-timer:focus {
-    background-color: #44a1f1 !important;
-    border-color: #44a1f1 !important;
-    color: black !important;
-}
-
-
-.btn-logbook,
-.btn-logbook:hover,
-.btn-logbook:active,
-.btn-logbook:visited,
-.btn-logbook:focus {
-    background-color: #ffbb44 !important;
-    border-color: #ffbb44 !important;
-    color: black !important;
-}
-
-
-.btn-near-me,
-.btn-near-me:hover,
-.btn-near-me:active,
-.btn-near-me:visited,
-.btn-near-me:focus {
-    background-color: #00a266 !important;
-    border-color: #00a266 !important;
-    color: black !important;
-}
-
-
-/* CSS for border colors */
-.timer {
-    border-color: #44a1f1 !important;
-}
-
-.logbook {
-    border-color: #ffbb44 !important;
-}
-
-.near-me {
-    border-color: #00a266 !important;
-}
-
-
-/* CSS for timer (timer.html) */
+/* CSS for the board and its related parts. */
 .container {
-    text-align: center;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.center-timer {
-    display: inline-block;
-    width: 300px;
+#board {
+    width: 350px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 26.5px;
 }
 
-.base-timer {
-    position: sticky;
-    height: 300px;
-    width: 300px;
-}
-
-.base-timer__circle {
-    fill: none;
-    stroke-width: 7px;
-}
-
-.base-timer__label {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    margin-top: -298px;
+.space {
+    width: 100px;
+    height: 100px;
+    font-size: 100px;
+    color:#007bff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 48px;
+    border: 3.5px solid;
 }
 
-.table-logbook {
-    background-color: #ffbb44;
-    color: black;
-}
-
-.align-left {
-    text-align: left !important;
-}
-
-/* CSS for the embedded map's border radius (near-me.html) */
-iframe {
-    border-radius: 2%;
-    border: 1em solid red;
-    appearance:none;
-    -moz-appearance:none;
-    -webkit-appearance:none;
-    outline:none;
-}
-
-
-/* CSS for footer positioning (layout.html) */
+/* CSS for footer positioning (layout.html). */
 footer {
     position: fixed;
     bottom: 0;
