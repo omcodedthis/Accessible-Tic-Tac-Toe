@@ -1,7 +1,7 @@
-// constants for the symbols 'O' & 'X'. An array of all the possible win combos is also created.
+// constants for the symbols 'O', 'X', & HEADERTEXT. An array of all the possible win combos is also created. 
 const CIRCLE = 'O'
 const CROSS = 'X'
-const allWinCombos = [
+const ALLWINCOMBOS = [
     // horizontal lines
     [0, 1, 2],
     [3, 4, 5],
@@ -15,6 +15,7 @@ const allWinCombos = [
     [0, 4 ,8],
     [2, 4, 6]
 ]
+const HEADERTEXT = "The current state of the board from left to right for each row below" 
 
 // variables for each parts of the game.
 let gameStatus = document.getElementById("gameStatus")
@@ -48,7 +49,6 @@ function markSpace(s) {
             boardWinCondition()
             return
         }
-        
         gameStatus.innerText = generateCurrentBoardInfo()
 
         changePlayerMarker()
@@ -58,7 +58,7 @@ function markSpace(s) {
 
 // Checks if the current player has won the game. Returns a winning combo if found otherwise null is returned.
 function checkIfPlayerHasWon() {
-    for (const combo of allWinCombos) {
+    for (const combo of ALLWINCOMBOS) {
         let [c1, c2, c3] = combo
 
         if (spaceTracker[c1] && (spaceTracker[c1] == spaceTracker[c2] && spaceTracker[c1] == spaceTracker[c3])) {
@@ -72,8 +72,15 @@ function checkIfPlayerHasWon() {
 // If a winner is declared, no moves can be made, the winner is announced, & the winning combo spaces are highlighted.
 function boardWinCondition() {
     gameStatus.innerText = currentPlayerMarker + " has won!"
+
+    let boardInfo  = generateCurrentBoardInfo()
+    document.getElementsByName("past_moves")[0].value = boardInfo
+    document.getElementsByName("date")[0].value = (new Date()).toLocaleDateString('en-GB')
+
     spacesArray.forEach(space => space.removeEventListener("click", markSpace))
     spacesIndexIfWon.forEach(id => spacesArray[id].style.backgroundColor="#aeb2b6")
+
+    document.getElementById("statusHeader").innerText = HEADERTEXT + ":"
 }
 
 
@@ -100,12 +107,17 @@ function generateCurrentBoardInfo() {
 
 
 
-// Changes the marker to for the other player's turn.
+// Changes the marker to for the other player's turn & updates this change in statusHeader's text.
 function changePlayerMarker() {
+    let statusHeader = document.getElementById("statusHeader")
+ 
     if (currentPlayerMarker == CIRCLE) {
         currentPlayerMarker = CROSS
+        statusHeader.innerText = HEADERTEXT + " (" + CROSS + "'s Turn):"
+        
     } else {
         currentPlayerMarker = CIRCLE
+        statusHeader.innerText = HEADERTEXT + " (" + CIRCLE + "'s Turn):"
     }
 }
 
@@ -119,7 +131,10 @@ function resetBoard() {
     spacesArray.forEach(space => space.innerText = '')
     spacesIndexIfWon.forEach(id => spacesArray[id].style.backgroundColor="")
     
+    document.getElementsByName("past_moves")[0].placeholder = "Past Moves"
+
     currentPlayerMarker = CIRCLE
+    document.getElementById("statusHeader").innerText = HEADERTEXT + " (" + CIRCLE + "'s Turn):"
 
     spacesArray.forEach(space => space.addEventListener("click", markSpace))
 }

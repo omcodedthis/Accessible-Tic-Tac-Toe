@@ -89,7 +89,7 @@ input:checked + .slider:before {
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    padding-left: 26.5px;
+    padding-left: 26px;
 }
 
 .space {
@@ -101,6 +101,23 @@ input:checked + .slider:before {
     align-items: center;
     justify-content: center;
     border: 3.5px solid;
+}
+
+
+#gameForm {
+    padding-top: 20px;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 75px;
+}
+
+
+#video {
+    border: 3px solid #EEE;
+    border-radius: 25px;  
 }
 
 

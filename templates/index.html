@@ -12,7 +12,7 @@ Tic-Tac-Toe
 <div class="container">
   <!--Title and description for the game.-->
   <h1 id="gameTitle">Accessible Tic-Tac-Toe</h1>
-  <p style="text-align: center; font-size: 20px;">The current state of the board from left to right for each row below:</p>
+  <p id="statusHeader" style="text-align: center; font-size: 20px;">The current state of the board from left to right for each row below (O's Turn):</p>
   <p id="gameStatus" style="text-align: center; font-size: 18px;">The current board is empty.</p>
   <button type="button" class="btn btn-primary" id="resetButton">Reset Board</button>
 
@@ -28,6 +28,26 @@ Tic-Tac-Toe
     <div class="space" id="7"></div>
     <div class="space" id="8"></div>
   </div>
+  <!--The form to save past games.-->
+  <div id="gameForm">
+    <form action="/" method="post">
+      <div class="row g-3">
+        <div class="col-sm">
+          <input type="text" class="form-control" name="player_name" placeholder="Player Name" maxlength="10">
+        </div>
+        <div class="col-sm">
+          <input class="form-control" type="text" placeholder="Past Moves" name="past_moves" minlength="25" maxlength="25">
+        </div>
+        <div class="col-sm">
+          <input type="text" class="form-control" placeholder="DD/MM/YYYY (Date)" name="date" minlength="10" maxlength="10">
+        </div>
+        <div class="col-sm">
+          <button class="btn btn-primary" type="submit" type="submit">Save Board</button>
+        </div>
+      </div>
+  </form>
+  </div>
 </div>
+<!--The script for the game.-->
 <script src="static/tictactoe_game.js"></script>
 {% endblock %}

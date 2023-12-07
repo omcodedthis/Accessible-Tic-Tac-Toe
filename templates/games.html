@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block icon %}
+<link href="/static/main-icon.ico" rel="icon">
+{% endblock %}
+
+{% block title %}
+Past Games
+{% endblock %}
+
+
+{% block log_active %}
+active
+{% endblock %}
+
+
+{% block body %}
+<div class="mt-4 me-5 ms-5" style="padding-bottom: 175px;">
+<p>Your Past Games formatted in a table below:</p>
+<table class="table table-hover">
+    <thead style="background-color: #007bff; color: black;">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Player Name</th>
+        <th scope="col">Past Moves</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in user_data: %}
+      <tr>
+        <th scope="row">{{ loop.index }}</th>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

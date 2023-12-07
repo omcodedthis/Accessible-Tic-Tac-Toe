@@ -17,21 +17,17 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
           Tic-Tac-Toe
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link {% block games_active %} {% endblock %}" href="">Past Games</a>
+              <a class="nav-link {% block games_active %} {% endblock %}" href="/games">Past Games</a>
             </li>
+
             <li class="nav-item">
               <a class="nav-link {% block about_active %} {% endblock %}" href="/about">About</a>
             </li>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.youtube.com/watch?v=3qzcAMShotQ">How to Play</a>
-          </li>
+            
             <li class="nav-item">
               <label class="switch">
                 <input type="checkbox" id="toggle" value="off" onclick="change_site_mode()"></input>
