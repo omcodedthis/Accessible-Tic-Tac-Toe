@@ -56,8 +56,8 @@ Without any interaction required, the user's Past Games data is listed in a tabl
 making it much easier to utilise the service.
 
 **Accessibility-related features for each impairment:**
-1) Verbose header > Visual & Cognitive.
-2) No need to input details to view history > Cognitive, Auditory, & Motor.
+1) Verbose header > Cognitive & Visual.
+2) No need to input any details to view history > Cognitive, Visual, & Motor.
 3) Amount of interaction points kept to a minimum > Cognitive, Visual, & Speech.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 </details>
