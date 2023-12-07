@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block icon %}
+<link href="/static/main-icon.ico" rel="icon">
+{% endblock %}
+
+{% block title %}
+About Tic-Tac-Toe
+{% endblock %}
+
+
+{% block howto_active %}
+active
+{% endblock %}
+
+
+{% block body %}
+<br>
+<div class="container">
+    <!-- Embedded youtube video. -->
+    <iframe width="600" height="300" src="https://www.youtube.com/embed/3qzcAMShotQ" id="video"></iframe>
+    
+    <!-- Supporting text. -->
+    <h1 class="mt-5 ms-5 me-5">How to Play?</h1>
+    <p class="mt-4 ms-5 me-5" style="font-size: 18px;"> 
+        The game is played on a grid that's 3 squares by 3 squares. Players take turns putting their marks ('O' or 'X') in 
+        empty squares. The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner. You
+        can also save the board after a game by clicking the "Save Board" button which will autofill the details for you.              
+    <p>
+</div>
+{% endblock %}

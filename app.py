@@ -17,10 +17,14 @@ db = con.cursor()
 
 
 # Sets API Key & URL, this is used to get user's device data.
-api_key = "API Key"
+api_key = "insert API Key"
 api_url = "https://geo.ipify.org/api/v2/country?"
 
 
+
+# index() has two methods, "GET" & "POST". If "GET" is used, index.html is rendered, allowing the user to play the game. If
+# "POST" is used, the details inputted in the form gets added to user_data.db, which is the database that stores the details 
+# of all users.
 @app.route("/", methods=["GET", "POST"])
 def index():
         if (request.method == "GET"):
@@ -52,6 +56,8 @@ def index():
                 return render_template("index.html")
 
 
+# games() has one method, "GET". When requested, the database is queried for all relevant entries with the same IP address
+# as the user. user_data is then passed to games.html, where a for loop lists the data in a table using Jinja.
 @app.route("/games", methods=["GET"])
 def games():
         # submits a request to get the device data of the user, the user's IP is stored in user_ip
@@ -65,6 +71,12 @@ def games():
         return render_template("games.html", user_data=user_data)
 
 
+# about()) has one method, "GET". When requested, about.html is rendered to the user.
+@app.route("/howto", methods=["GET"])
+def howto():
+        return render_template("howto.html")
+
+# about()) has one method, "GET". When requested, about.html is rendered to the user.
 @app.route("/about", methods=["GET"])
 def about():
         return render_template("about.html")
