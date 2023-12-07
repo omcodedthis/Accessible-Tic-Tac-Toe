@@ -22,6 +22,7 @@ let resetButton = document.getElementById("resetButton")
 let spacesArray = Array.from(document.getElementsByClassName("space"))
 let currentPlayerMarker = CIRCLE
 let spaceTracker = Array(9).fill(null)
+let spacesIndexIfWon = null;
 
 
 // Starts the game by listening for a click on a space. markSpace is then called when a space is clicked.
@@ -48,6 +49,8 @@ function markSpace(s) {
             return
         }
         
+        gameStatus.innerText = generateCurrentBoardInfo()
+
         changePlayerMarker()
     }
 }
@@ -70,7 +73,31 @@ function checkIfPlayerHasWon() {
 function boardWinCondition() {
     gameStatus.innerText = currentPlayerMarker + " has won!"
     spacesArray.forEach(space => space.removeEventListener("click", markSpace))
+    spacesIndexIfWon.forEach(id => spacesArray[id].style.backgroundColor="#aeb2b6")
 }
+
+
+// Loops over all indexes in spaceTracker & generates a summary of the current state of the board. 
+function generateCurrentBoardInfo() {
+    let info = ""
+    for (let i = 0; i < spaceTracker.length; i++) {
+        let text = spaceTracker[i]
+
+        if (!text) {
+            text = "empty"
+        }
+
+        info += ' ' + text + ','
+    }
+
+    // checks if the current state is a draw
+    if (!(info.includes("empty"))) {
+        return "The game has ended in a draw."
+    } else {
+        return info.slice(0, -1)
+    }
+}
+
 
 
 // Changes the marker to for the other player's turn.
@@ -90,6 +117,7 @@ function resetBoard() {
     spaceTracker.fill(null)
 
     spacesArray.forEach(space => space.innerText = '')
+    spacesIndexIfWon.forEach(id => spacesArray[id].style.backgroundColor="")
     
     currentPlayerMarker = CIRCLE
 

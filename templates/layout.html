@@ -23,8 +23,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
+              <a class="nav-link {% block games_active %} {% endblock %}" href="">Past Games</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link {% block about_active %} {% endblock %}" href="/about">About</a>
             </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.youtube.com/watch?v=3qzcAMShotQ">How to Play</a>
+          </li>
             <li class="nav-item">
               <label class="switch">
                 <input type="checkbox" id="toggle" value="off" onclick="change_site_mode()"></input>
@@ -32,7 +39,7 @@
               </label>
             </li>
           </ul>
-          <span class="navbar-nav ms-auto">PLACEHOLDER TEXT</span>
+          <span class="navbar-nav ms-auto">Made for Everyone.</span>
         </div>
       </div>
     </nav>
