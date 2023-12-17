@@ -1,5 +1,6 @@
 # Accessible-Tic-Tac-Toe
-This is a web app that is inclusive to Persons With Disabilities (PWDs), specifically persons with sensory impairments to play Tic-Tac-Toe. While most games focus on graphics and animations, there is a need to make games that are inclusive to Persons With Disabilities (PWDs), specifically persons with sensory impairments. Persons with sensory impairments commonly use a [screen reader](https://www.youtube.com/watch?v=OUDV1gqs9GA&t=1080s) as an interface to navigate their web browser. 
+This is a web app that is inclusive to Persons With Disabilities (PWDs), specifically persons with sensory impairments to play Tic-Tac-Toe. While most games focus on graphics and animations, there is a need to make games that are inclusive to Persons With Disabilities (PWDs), specifically persons with sensory impairments. Persons with sensory impairments commonly use a [screen reader](https://www.youtube.com/watch?v=OUDV1gqs9GA&t=1080s) as an interface to navigate their web browser. Do note that this is currently optimised for desktop mode.
+
 
 ## Demo
 https://github.com/omcodedthis/Accessible-Tic-Tac-Toe/assets/119602009/25a4142f-d13a-446e-8529-fd787ca6b2cd
@@ -73,7 +74,7 @@ making it much easier to utilise the service.
 This section has an embedded YouTube video that explains how to play Tic-Tac-Toe for users with cognitive & motor impairments. For users with visual impairements & auditory impairments, a text-based explanation is provided below.
 
 **Accessibility-related features for each impairment:**
-1) Short & engaging video embedded > Cognitive & Motor.
+1) Short & engaging video embedded > Cognitive.
 2) Text-based explanation provided > Visual & Auditory.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 </details>
@@ -120,17 +121,17 @@ from the database, `user_data.db`.
 ```
 
 ## Getting Started
-You can visit & use the live version [here](https://attt.pythonanywhere.com/). If you wish to run this locally, follow the steps below.
+You can visit & use the live version [here](https://attt.pythonanywhere.com/) (Desktop Mode recommended). If you wish to run this locally, follow the steps below.
 
 * Install all the dependencies using this command line.
   ```
   pip install -r requirements.txt
   ```
 
-* Make a [Geo Ipify](https://geo.ipify.org/) account and set your API Key to `api_key`.
+* Make a [Geo Ipify](https://geo.ipify.org/signup) account and set your API Key to `api_key`.
  https://github.com/omcodedthis/Accessible-Tic-Tac-Toe/blob/942205df9a0e264c53cf9dc71ab12c4a56e375fd/app.py#L19-L20
 
-* To run the application on a development server, use this command line while in the main folder of the Web App (Staid-main/).
+* To run the application on a development server, use this command line while in the main folder of the Web App (Accessible-Tic-Tac-Toe/).
    ```
     flask run
     ```
