@@ -7,8 +7,7 @@ const ALLWINCOMBOS = [
     [3, 4, 5],
     [6, 7, 8],
     // vertical lines
-    [2, 4, 6],
-    [0, 3 ,6],
+    [0, 3, 6],
     [1, 4, 7],
     [2, 5, 8],
     // diagonal lines
@@ -40,17 +39,23 @@ function markSpace(s) {
     // if the respective space in the spaceTracker array is not null, assign the respective symbol to it
     // then check if the current board has a winner, & declare if there is 
     if (!spaceTracker[spaceID]) {
+        let win = false
+
+        // adds the symbol to the tracker array & to the space
         spaceTracker[spaceID] = currentPlayerMarker
         s.target.innerText = currentPlayerMarker
 
+        // checks for win condition
         spacesIndexIfWon = checkIfPlayerHasWon()
-
         if (spacesIndexIfWon) {
-            boardWinCondition()
+            win = true
+            boardWinCondition(win)
             return
         }
-        gameStatus.innerText = generateCurrentBoardInfo()
-
+        
+        // updates the board info
+        gameStatus.innerText = generateCurrentBoardInfo(false)
+        
         changePlayerMarker()
     }
 }
@@ -70,22 +75,25 @@ function checkIfPlayerHasWon() {
 
 
 // If a winner is declared, no moves can be made, the winner is announced, & the winning combo spaces are highlighted.
-function boardWinCondition() {
+function boardWinCondition(hasWon) {
     gameStatus.innerText = currentPlayerMarker + " has won!"
 
-    let boardInfo  = generateCurrentBoardInfo()
+    // autofills the board info to the form
+    let boardInfo  = generateCurrentBoardInfo(hasWon)
     document.getElementsByName("past_moves")[0].value = boardInfo
     document.getElementsByName("date")[0].value = (new Date()).toLocaleDateString('en-GB')
 
+    // removes the listener for clicks
     spacesArray.forEach(space => space.removeEventListener("click", markSpace))
     spacesIndexIfWon.forEach(id => spacesArray[id].style.backgroundColor="#aeb2b6")
 
+    // removes turn indication in the header
     document.getElementById("statusHeader").innerText = HEADERTEXT + ":"
 }
 
 
 // Loops over all indexes in spaceTracker & generates a summary of the current state of the board. 
-function generateCurrentBoardInfo() {
+function generateCurrentBoardInfo(hasWon) {
     let info = ""
     for (let i = 0; i < spaceTracker.length; i++) {
         let text = spaceTracker[i]
@@ -97,8 +105,8 @@ function generateCurrentBoardInfo() {
         info += ' ' + text + ','
     }
 
-    // checks if the current state is a draw
-    if (!(info.includes("empty"))) {
+    // checks if the current state is a draw (no empty spaces & no win)
+    if ((!(info.includes("empty"))) && (!(hasWon))) {
         return "The game has ended in a draw."
     } else {
         return info.slice(0, -1)
@@ -126,16 +134,18 @@ function changePlayerMarker() {
 function resetBoard() {
     gameStatus.innerText = "The current board is empty."
 
+    // resets the various arrays to null & '' accordingly
     spaceTracker.fill(null)
-
     spacesArray.forEach(space => space.innerText = '')
+    
+    // removes the highlighted spaces' background color
     spacesIndexIfWon.forEach(id => spacesArray[id].style.backgroundColor="")
     
-    document.getElementsByName("past_moves")[0].placeholder = "Past Moves"
-
+    // changes the player marker back to CIRCLE & indicates this in the header
     currentPlayerMarker = CIRCLE
     document.getElementById("statusHeader").innerText = HEADERTEXT + " (" + CIRCLE + "'s Turn):"
 
+    // adds the listener back
     spacesArray.forEach(space => space.addEventListener("click", markSpace))
 }
 
